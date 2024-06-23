@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek daleman kamu</title>
+    <link rel="stylesheet" href="style.css"
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="max-w-md w-full bg-white p-8 rounded shadow-lg m-auto mt-48">
+        <h2 class="text-2xl font-bold mb-8 text-center">Cek daleman</h2>
+        <form id="khodamForm" action="#" method="POST">
+            <div class="mb-4">
+                <input type="text" id="nama" placeholder="Masukan Nama Kamu" name="nama" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4 flex justify-center">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline">
+                    Trawang
+                </button>
+            </div>
+
+            <div id="result" class="text-center"></div>
+        </form>
+    </div>
+
+    <script>
+        const khodamNames = [
+            "sempak lu warna ungu",
+            "sempak lu bolong",
+            "Sempak lu warna Pink",
+            "sempak lu Warna warni",
+            "lu ga make sempak",
+            "sempak lu belum di cuci",
+            "sempak lu mahal",
+            "sempak lu bau",
+            "lu make sempak bapak",
+            "lu make sempak tetangga",
+            "sempak lu warna hijau",
+            "sempak lu merah",
+            "sempak lu warna abu-abu"
+        ];
+
+        function cekKhodam() {
+            const randomIndex = Math.floor(Math.random() * khodamNames.length);
+            const randomKhodam = khodamNames[randomIndex];
+
+            const nama = document.getElementById('nama').value.trim();
+
+            if (nama === '') {
+                alert('Namanya di isi dulu syg!');
+                return;
+            }
+
+            console.log(`Khodam yang muncul: ${randomKhodam}`);
+
+            const resultContainer = document.getElementById('result');
+            resultContainer.innerHTML = `<h4 class="text-3xl text-black-500 font-bold">${nama}</h4> <p class="text-2xl text-blue-500 font-bold">${randomKhodam}</p>`;
+
+            const inputNama = document.getElementById('nama');
+            inputNama.value = '';
+        }
+
+        const form = document.getElementById('khodamForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); 
+            cekKhodam();
+        });
+    </script>
+    <div>
+    <p class="text-center" size="12">Created by Azmi Zainn</p>
+    <div id="resultContainer" text-center></div>
+    </div>
+</body>
+</html>
